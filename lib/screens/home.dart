@@ -2,6 +2,8 @@ import 'package:datatablewebpoc/model/report.dart';
 import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/widget/search_widget.dart';
+import 'package:datatablewebpoc/widget/dropdown_widget.dart';
+import 'package:datatablewebpoc/widget/calendar_widget.dart';
 
 //import 'package:syncfusion_flutter_xlsio/xlsio.dart' hide Column, Alignment;
 import 'dart:html';
@@ -37,37 +39,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     print('Search $_searchResult');
     print('Reports $reports');
-   // print('ReportsFiltered $reportsFiltered');
+
 
     final columns = ['Center Name', 'Date', 'Calculated', 'Adjustment', 'Net', 'Notes', 'Payment Type', 'Status'];
     return SingleChildScrollView(
       child: Column(
         children: [
           buildSearch(),
-//           Container(
-//             child: TextButton(onPressed: () {
-//               // Create a new Excel document.
-//               final Workbook workbook = new Workbook();
-// //Accessing worksheet via index.
-//               final Worksheet sheet = workbook.worksheets[0];
-// //Add Text.
-//               sheet.getRangeByName('A1').setText('Hello World');
-// //Add Number
-//               sheet.getRangeByName('A3').setNumber(44);
-// //Add DateTime
-//               sheet.getRangeByName('A5').setDateTime(DateTime(2020,12,12,1,10,20));
-// // Save the document.
-//               final List<int> bytes = workbook.saveAsStream();
-//               File('AddingTextNumberDateTime.xlsx').writeAsBytes(bytes);
-// //Dispose the workbook.
-//               workbook.dispose();
-//             },
-//               child: Text(
-//                   'Download'
-//               ),
-//
-//             ),
-//           ),
+         DropDownWidget(),
+          //CalenderWidget(),
           Container(
             padding: EdgeInsets.all(20.0),
             margin: EdgeInsets.all(20.0),
@@ -98,20 +78,7 @@ class _HomePageState extends State<HomePage> {
     onChanged: searchBook,
   );
 
-//   void createSheet()
-//   {
-//     // Create a new Excel document.
-//     final Workbook workbook = new Workbook();
-// //Accessing worksheet via index.
-//     workbook.worksheets[0];
-// // Save the document.
-//     final List<int> bytes = workbook.saveAsStream();
-//     String directory = (await getApplicationDocumentsDirectory()).path;
-//    final pdfName = '$directory/recipet.pdf';
-//    final File file = File(pdfName);
-//     await file.writeAsBytes(doc.save());
-//     File('CreateExcel.xlsx').writeAsBytes(bytes);
-//   }
+
 
   void searchBook(String _searchResult) {
     print('search book called');
@@ -149,3 +116,4 @@ class _HomePageState extends State<HomePage> {
       cells.map((data) => DataCell(Text('$data'))).toList();
 
 }
+
