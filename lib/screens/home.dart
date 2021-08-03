@@ -5,6 +5,7 @@ import 'package:datatablewebpoc/widget/search_widget.dart';
 import 'package:datatablewebpoc/widget/dropdown_widget.dart';
 import 'package:datatablewebpoc/widget/calendar_widget.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
+import 'package:datatablewebpoc/widget/tabledata_widget.dart';
 
 //import 'package:syncfusion_flutter_xlsio/xlsio.dart' hide Column, Alignment;
 import 'dart:html';
@@ -22,8 +23,6 @@ class _HomePageState extends State<HomePage> {
 
   late List<Report> reports;
   String _searchResult = '';
-
-
 
 
   @override
@@ -49,24 +48,8 @@ class _HomePageState extends State<HomePage> {
           buildSearch(),
          DropDownWidget(),
           //CalenderWidget(),
-          Container(
-            padding: EdgeInsets.all(20.0),
-            margin: EdgeInsets.all(20.0),
-            decoration: BoxDecoration(
-                border: Border(
-                    right:
-                    BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
-                    top:
-                    BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
-                    bottom:
-                    BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
-                    left: BorderSide(
-                        width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)))),
-            child: DataTable(
-                columns: getColumns(columns),
-                rows: getRows(reports)
-            ),
-          ),
+          DataTableWidget(),
+
         ],
       ),
     );
@@ -101,22 +84,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  List<DataColumn> getColumns(List<String> columns) => columns
-      .map((String column) => DataColumn(
-    label: Text(column,style:WidgetsStyles.textLato400NormalOrangeColor(),),
-  //  onSort: onSort,
-  ))
-      .toList();
 
-  List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
-    final cells = [report.centerName, report.date, report.calculated, report.adjustment, report.net, report.notes,report.paymentType,report.status ];
-    print(cells[4]);
-    return DataRow(
-        cells: getCells(cells));
-  }).toList();
-
-  List<DataCell> getCells(List<dynamic> cells) =>
-      cells.map((data) => DataCell(Text('$data',  style: WidgetsStyles.textLato400NormalGreenColor(),))).toList();
 
 }
 
