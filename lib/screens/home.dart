@@ -49,56 +49,68 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Reports",
-                style: WidgetsStyles.textRoboto500Normal(),
-                textAlign: TextAlign.left),
+            Text(
+              "Reports",
+              style: WidgetsStyles.textRoboto500Normal(),
+            ),
             Container(
               padding: EdgeInsets.only(top: 32, bottom: 24),
               child: Row(children: [
                 Container(
                     padding: EdgeInsets.only(top: 20, right: 24),
                     child: buildSearch()),
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                          height: 16,
-                          padding: EdgeInsets.only(left: 4, bottom: 4),
-                          child: Text("Status",
-                              style: WidgetsStyles.textLato400Normal(),
-                              textAlign: TextAlign.left)),
-                      Container(
-                          width: 169,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black26, width: 1),
+                Container(
+                    padding: EdgeInsets.only(right: 24),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              height: 16,
+                              child: Text("Status",
+                                  style: WidgetsStyles.textLato400Normal(),
+                                  textAlign: TextAlign.left)),
+                          SizedBox(
+                            height: 4,
                           ),
-                          child: DropDownWidget())
-                    ]),
-                Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                          height: 16,
-                          padding: EdgeInsets.only(left: 4, bottom: 4),
-                          child: Text("Transaction Date",
-                              style: WidgetsStyles.textLato400Normal(),
-                              textAlign: TextAlign.left)),
-                      Container(
-                          width: 261,
-                          height: 48,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black26, width: 1),
+                          Container(
+                              width: 169,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.black26, width: 1),
+                              ),
+                              child: DropDownWidget())
+                        ])),
+                Container(
+                    padding: EdgeInsets.only(right: 24),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              height: 16,
+                              child: Text("Transaction Date",
+                                  style: WidgetsStyles.textLato400Normal(),
+                                  textAlign: TextAlign.left)),
+                          SizedBox(
+                            height: 4,
                           ),
-                          child: CalenderWidget())
-                    ]),
-                Column(children: [
+                          Container(
+                              width: 261,
+                              height: 48,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(6),
+                                color: Colors.white,
+                                border:
+                                    Border.all(color: Colors.black26, width: 1),
+                              ),
+                              child: CalenderWidget())
+                        ])),
+                Container(
+                    child: Column(children: [
                   Container(
                       width: 133,
                       height: 40,
@@ -108,7 +120,7 @@ class _HomePageState extends State<HomePage> {
                             Icon(Icons.download),
                             Text("Download")
                           ])))
-                ]),
+                ])),
               ]),
             ),
             DataTableWidget(),
