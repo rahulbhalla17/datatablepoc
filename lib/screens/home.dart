@@ -4,6 +4,7 @@ import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/widget/search_widget.dart';
 import 'package:datatablewebpoc/widget/dropdown_widget.dart';
 import 'package:datatablewebpoc/widget/calendar_widget.dart';
+import 'package:datatablewebpoc/utilities/constants.dart';
 
 //import 'package:syncfusion_flutter_xlsio/xlsio.dart' hide Column, Alignment;
 import 'dart:html';
@@ -20,8 +21,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
 
   late List<Report> reports;
-  //late List<Report> reportsFiltered = [];
   String _searchResult = '';
+
+
 
 
   @override
@@ -31,7 +33,6 @@ class _HomePageState extends State<HomePage> {
 
     this.reports = List.of(allReports);
     print('search book called1 : $reports');
-    //reportsFiltered = reports;
 
   }
 
@@ -102,18 +103,20 @@ class _HomePageState extends State<HomePage> {
 
   List<DataColumn> getColumns(List<String> columns) => columns
       .map((String column) => DataColumn(
-    label: Text(column),
+    label: Text(column,style:WidgetsStyles.textLato400NormalOrangeColor(),),
   //  onSort: onSort,
   ))
       .toList();
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
     final cells = [report.centerName, report.date, report.calculated, report.adjustment, report.net, report.notes,report.paymentType,report.status ];
-    return DataRow(cells: getCells(cells));
+    print(cells[4]);
+    return DataRow(
+        cells: getCells(cells));
   }).toList();
 
   List<DataCell> getCells(List<dynamic> cells) =>
-      cells.map((data) => DataCell(Text('$data'))).toList();
+      cells.map((data) => DataCell(Text('$data',  style: WidgetsStyles.textLato400NormalGreenColor(),))).toList();
 
 }
 
