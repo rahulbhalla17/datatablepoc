@@ -110,17 +110,18 @@ class _HomePageState extends State<HomePage> {
                               child: CalenderWidget())
                         ])),
                 Container(
+                    padding: EdgeInsets.only(top: 20, left: 272),
                     child: Column(children: [
-                  Container(
-                      width: 133,
-                      height: 40,
-                      child: ElevatedButton(
-                          onPressed: () {},
-                          child: Row(children: [
-                            Icon(Icons.download),
-                            Text("Download")
-                          ])))
-                ])),
+                      Container(
+                          width: 133,
+                          height: 40,
+                          child: ElevatedButton(
+                              onPressed: () {},
+                              child: Row(children: [
+                                Icon(Icons.download),
+                                Text("Download")
+                              ])))
+                    ])),
               ]),
             ),
             DataTableWidget(),
