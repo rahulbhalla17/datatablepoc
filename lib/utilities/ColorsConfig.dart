@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ColorResource {
-
   ColorResource._();
 
   //Dark Theme Colors
@@ -23,13 +22,11 @@ class ColorResource {
   static const dividerLight = Colors.black54;
 
   // New
-   static const black50 = const Color(0xff8D8D8D);
-   static const black80 = const Color(0xff484848);
-   static const black100 = const Color(0xff1B1B1B);
-   static const greenText = const Color(0xff00B28A);
-   static const orangeText = const Color(0xffDF9641);
-   static const blue100 = const Color(0xff0078D4);
-
-
-
+  static const black50 = const Color(0xff8D8D8D);
+  static const black80 = const Color(0xff484848);
+  static const black100 = const Color(0xff1B1B1B);
+  static const greenText = const Color(0xff00B28A);
+  static const orangeText = const Color(0xffDF9641);
+  static const blue100 = const Color(0xff0078D4);
+  static const reportTitle = const Color(0xff323232);
 }

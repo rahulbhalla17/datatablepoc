@@ -6,15 +6,10 @@ const kTempTextStyle = TextStyle(
   fontSize: 100.0,
 );
 
-
-
-
 class WidgetsStyles {
   // Fields DataTable
-  static TextStyle textLato400Normal
-      ({
-    Color color = ColorResource.black100, double size = 12
-  }) {
+  static TextStyle textLato400Normal(
+      {Color color = ColorResource.black100, double size = 12}) {
     return TextStyle(
       color: color,
       fontWeight: FontWeight.w400,
@@ -24,25 +19,20 @@ class WidgetsStyles {
     );
   }
 
-  //Header DataTable
-  static TextStyle textLato700Normal
-      ({
-    Color color = ColorResource.primary, double size = 12
-  }) {
+  static TextStyle textRoboto500Normal(
+      {Color color = ColorResource.reportTitle, double size = 20}) {
     return TextStyle(
       color: color,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w500,
       fontStyle: FontStyle.normal,
       fontSize: size,
-      fontFamily: 'Lato',
+      fontFamily: 'Roboto',
     );
   }
 
   //Header DataTable
-  static TextStyle textLato700NormalGreenColor
-      ({
-    Color color = ColorResource.primary, double size = 12
-  }) {
+  static TextStyle textLato700Normal(
+      {Color color = ColorResource.primary, double size = 12}) {
     return TextStyle(
       color: color,
       fontWeight: FontWeight.w700,
@@ -52,10 +42,9 @@ class WidgetsStyles {
     );
   }
 
-  static TextStyle textLato400NormalOrangeColor
-      ({
-    Color color = ColorResource.orangeText, double size = 12
-  }) {
+  //Header DataTable
+  static TextStyle textLato700NormalGreenColor(
+      {Color color = ColorResource.primary, double size = 12}) {
     return TextStyle(
       color: color,
       fontWeight: FontWeight.w700,
@@ -65,10 +54,8 @@ class WidgetsStyles {
     );
   }
 
-  static TextStyle textLato400NormalGreenColor
-      ({
-    Color color = ColorResource.greenText, double size = 12
-  }) {
+  static TextStyle textLato400NormalOrangeColor(
+      {Color color = ColorResource.orangeText, double size = 12}) {
     return TextStyle(
       color: color,
       fontWeight: FontWeight.w700,
@@ -78,4 +65,14 @@ class WidgetsStyles {
     );
   }
 
+  static TextStyle textLato400NormalGreenColor(
+      {Color color = ColorResource.greenText, double size = 12}) {
+    return TextStyle(
+      color: color,
+      fontWeight: FontWeight.w700,
+      fontStyle: FontStyle.normal,
+      fontSize: size,
+      fontFamily: 'Lato',
+    );
+  }
 }

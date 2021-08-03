@@ -7,10 +7,7 @@ import 'package:datatablewebpoc/widget/calendar_widget.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/widget/tabledata_widget.dart';
 
-//import 'package:syncfusion_flutter_xlsio/xlsio.dart' hide Column, Alignment;
 import 'dart:html';
-
-
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,19 +17,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   late List<Report> reports;
   String _searchResult = '';
 
-
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     this.reports = List.of(allReports);
-    print('search book called1 : $reports');
-
+    print('search report called : $reports');
   }
 
   @override
@@ -40,34 +33,97 @@ class _HomePageState extends State<HomePage> {
     print('Search $_searchResult');
     print('Reports $reports');
 
-
-    final columns = ['Center Name', 'Date', 'Calculated', 'Adjustment', 'Net', 'Notes', 'Payment Type', 'Status'];
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          buildSearch(),
-         DropDownWidget(),
-          //CalenderWidget(),
-          DataTableWidget(),
-
-        ],
-      ),
-    );
-
+    final columns = [
+      'Center Name',
+      'Date',
+      'Calculated',
+      'Adjustment',
+      'Net',
+      'Notes',
+      'Payment Type',
+      'Status'
+    ];
+    return Container(
+        padding: EdgeInsets.all(40.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text("Reports",
+                style: WidgetsStyles.textRoboto500Normal(),
+                textAlign: TextAlign.left),
+            Container(
+              padding: EdgeInsets.only(top: 32, bottom: 24),
+              child: Row(children: [
+                Container(
+                    padding: EdgeInsets.only(top: 20, right: 24),
+                    child: buildSearch()),
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          height: 16,
+                          padding: EdgeInsets.only(left: 4, bottom: 4),
+                          child: Text("Status",
+                              style: WidgetsStyles.textLato400Normal(),
+                              textAlign: TextAlign.left)),
+                      Container(
+                          width: 169,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black26, width: 1),
+                          ),
+                          child: DropDownWidget())
+                    ]),
+                Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                          height: 16,
+                          padding: EdgeInsets.only(left: 4, bottom: 4),
+                          child: Text("Transaction Date",
+                              style: WidgetsStyles.textLato400Normal(),
+                              textAlign: TextAlign.left)),
+                      Container(
+                          width: 261,
+                          height: 48,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            color: Colors.white,
+                            border: Border.all(color: Colors.black26, width: 1),
+                          ),
+                          child: CalenderWidget())
+                    ]),
+                Column(children: [
+                  Container(
+                      width: 133,
+                      height: 40,
+                      child: ElevatedButton(
+                          onPressed: () {},
+                          child: Row(children: [
+                            Icon(Icons.download),
+                            Text("Download")
+                          ])))
+                ]),
+              ]),
+            ),
+            DataTableWidget(),
+          ],
+        ));
   }
 
   Widget buildSearch() => SearchWidget(
-    text: _searchResult,
-    hintText: 'Title or Author Name',
-    onChanged: searchBook,
-  );
+        text: _searchResult,
+        hintText: 'Search Center',
+        onChanged: searchCenter,
+      );
 
-
-
-  void searchBook(String _searchResult) {
-    print('search book called');
+  void searchCenter(String _searchResult) {
     final reports = allReports.where((report) {
-
       final titleLower = report.centerName.toLowerCase();
       final authorLower = report.status.toLowerCase();
       final searchLower = _searchResult.toLowerCase();
@@ -76,15 +132,9 @@ class _HomePageState extends State<HomePage> {
           authorLower.contains(searchLower);
     }).toList();
 
-
     setState(() {
-      print('search book called1:$reports');
       this._searchResult = _searchResult;
       this.reports = reports;
     });
   }
-
-
-
 }
-

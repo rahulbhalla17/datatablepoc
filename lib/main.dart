@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
-            'POC'
-          ),
+          title: Text('POC'),
         ),
         body: HomePage(),
       ),
@@ -85,4 +83,3 @@ class _dataState extends State<data> {
     );
   }
 }
-

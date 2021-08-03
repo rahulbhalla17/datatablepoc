@@ -14,20 +14,15 @@ class _DropDownWidgetState extends State<DropDownWidget> {
   Widget build(BuildContext context) {
     return DropdownButton<String>(
       value: dropdownValue,
-      icon: const Icon(Icons.arrow_downward),
+      icon: const Icon(Icons.arrow_drop_down),
       iconSize: 24,
-      elevation: 16,
       style: const TextStyle(color: Colors.deepPurple),
-      underline: Container(
-        height: 2,
-        color: Colors.deepPurpleAccent,
-      ),
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['Success','Processing', 'Settled', 'Failed', 'Other']
+      items: <String>['Success', 'Processing', 'Settled', 'Failed', 'Other']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
@@ -36,5 +31,4 @@ class _DropDownWidgetState extends State<DropDownWidget> {
       }).toList(),
     );
   }
-  }
-
+}
