@@ -1,5 +1,4 @@
 
-
 class Report {
   final String centerName;
   final String date;
@@ -20,4 +19,29 @@ class Report {
     required this.paymentType,
     required this.status,
   });
+
+  factory Report.fromJson(Map<String, dynamic> json) => Report(
+    centerName: json['centerName'],
+    date: json['date'],
+    calculated: json['calculated'],
+    adjustment: json['adjustment'],
+    net: json['net'],
+    notes: json['notes'],
+    paymentType: json['paymentType'],
+    status: json['status'],
+  );
+
+  Map<String, dynamic> toJson() => {
+    'centerName': centerName,
+    'date': date,
+    'calculated': calculated,
+    'adjustment': adjustment,
+    'net': net,
+    'notes': notes,
+    'paymentType': paymentType,
+    'status': status,
+  };
 }
+
+
+

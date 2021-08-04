@@ -2,6 +2,7 @@ import 'package:datatablewebpoc/model/report.dart';
 import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
+import 'package:datatablewebpoc/utilities/ColorsConfig.dart';
 
 class DataTableWidget extends StatefulWidget {
   const DataTableWidget({Key? key}) : super(key: key);
@@ -48,33 +49,26 @@ class _DataTableWidgetState extends State<DataTableWidget> {
 
   List<DataColumn> getColumns(List<String> columns) => columns
       .map((String column) => DataColumn(
-            label: Text(
-              column,
-              style: WidgetsStyles.textLato400NormalOrangeColor(),
-            ),
-            //  onSort: onSort,
-          ))
+    label: Text(column,style:WidgetsStyles.textLato400Normal(color:ColorResource.orangeText ),),
+    //  onSort: onSort,
+  ))
       .toList();
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
-        final cells = [
-          report.centerName,
-          report.date,
-          report.calculated,
-          report.adjustment,
-          report.net,
-          report.notes,
-          report.paymentType,
-          report.status
-        ];
-        print(cells[4]);
-        return DataRow(cells: getCells(cells));
-      }).toList();
+    final cells = [report.centerName, report.date, report.calculated, report.adjustment, report.net, report.notes,report.paymentType,report.status ];
+    print(cells[4]);
 
-  List<DataCell> getCells(List<dynamic> cells) => cells
-      .map((data) => DataCell(Text(
-            '$data',
-            style: WidgetsStyles.textLato400NormalGreenColor(),
-          )))
-      .toList();
+    return DataRow(
+        // color: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+        //   if cells[4]
+        //     return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+        //   return null;  // Use the default value.
+        // }),
+        cells: getCells(cells));
+  }).toList();
+
+  List<DataCell> getCells(List<dynamic> cells) =>
+      cells.map((data) => DataCell(Text('$data',  style: WidgetsStyles.textLato400Normal(color: ColorResource.greenText),))).toList();
+
+
 }
