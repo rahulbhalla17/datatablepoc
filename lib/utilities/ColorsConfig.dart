@@ -21,7 +21,6 @@ class ColorResource {
   static const subtitle1Light = Colors.black87;
   static const dividerLight = Colors.black54;
 
-
   static const black50 = const Color(0xff8D8D8D);
   static const black80 = const Color(0xff484848);
   static const black100 = const Color(0xff1B1B1B);
@@ -29,10 +28,5 @@ class ColorResource {
   static const orangeText = const Color(0xffDF9641);
   static const blue100 = const Color(0xff0078D4);
   static const reportTitle = const Color(0xff323232);
-
-
+  static const primary100 = const Color(0xff0078D4);
 }
-
-
-
-

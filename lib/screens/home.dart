@@ -130,7 +130,8 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(6),
                                   color: Colors.white,
                                   border: Border.all(
-                                      color: Colors.black26, width: 1),
+                                      color: ColorResource.primary100,
+                                      width: 1),
                                 ),
                                 child: ElevatedButton(
                                     onPressed: () {},
@@ -171,9 +172,23 @@ class _HomePageState extends State<HomePage> {
                             height: 40,
                             child: ElevatedButton(
                                 onPressed: () {},
+                                style: ElevatedButton.styleFrom(
+                                  primary: Colors.white,
+                                  side: BorderSide(
+                                      width: 1,
+                                      color: ColorResource.primary100),
+                                  elevation: 3, //elevation of button
+                                  shape: RoundedRectangleBorder(
+                                      //to set border radius to button
+                                      borderRadius: BorderRadius.circular(6)),
+                                ),
                                 child: Row(children: [
-                                  Icon(Icons.download),
-                                  Text("Download")
+                                  Icon(Icons.download,
+                                      color: ColorResource.primary100),
+                                  Text("Download",
+                                      style: WidgetsStyles.textLato700Normal(
+                                          color: ColorResource.primary100,
+                                          size: 14))
                                 ])))
                       ])),
                 ]),
