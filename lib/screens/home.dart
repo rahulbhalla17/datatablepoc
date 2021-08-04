@@ -84,7 +84,30 @@ class _HomePageState extends State<HomePage> {
                                   border: Border.all(
                                       color: Colors.black26, width: 1),
                                 ),
-                                child: DropDownWidget())
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.white)),
+                                    child: Row(children: [
+                                      Container(
+                                          padding: EdgeInsets.only(left: 19),
+                                          child: Text(
+                                            "2 Items Selected",
+                                            style:
+                                                WidgetsStyles.textLato400Normal(
+                                                    color:
+                                                        ColorResource.black80,
+                                                    size: 14),
+                                          )),
+                                      Container(
+                                          padding: EdgeInsets.only(left: 12),
+                                          width: 18,
+                                          height: 18,
+                                          child: Icon(Icons.arrow_drop_down,
+                                              color: ColorResource.black100)),
+                                    ])))
                           ])),
                   Container(
                       padding: EdgeInsets.only(right: 24),
@@ -117,26 +140,25 @@ class _HomePageState extends State<HomePage> {
                                                 Colors.white)),
                                     child: Row(children: [
                                       Container(
-                                          padding: EdgeInsets.only(left: 15),
                                           width: 18,
                                           height: 18,
                                           child: Icon(
-                                              Icons.calendar_today_outlined,
+                                              Icons.calendar_today_rounded,
                                               color: ColorResource.black100)),
+                                      SizedBox(
+                                        width: 15,
+                                      ),
                                       Container(
-                                          padding: EdgeInsets.only(left: 19),
                                           child: Text(
-                                            "Jun 16, 2021 - Jun 17, 2021",
-                                            style:
-                                                WidgetsStyles.textLato400Normal(
-                                                    color:
-                                                        ColorResource.black80,
-                                                    size: 14),
-                                          )),
+                                        "Jun 16, 2021 - Jun 17, 2021",
+                                        style: WidgetsStyles.textLato400Normal(
+                                            color: ColorResource.black80,
+                                            size: 14),
+                                      )),
+                                      SizedBox(
+                                        width: 4,
+                                      ),
                                       Container(
-                                          padding: EdgeInsets.only(left: 12),
-                                          width: 18,
-                                          height: 18,
                                           child: Icon(Icons.arrow_drop_down,
                                               color: ColorResource.black100)),
                                     ])))
