@@ -1,4 +1,5 @@
 import 'package:datatablewebpoc/model/report.dart';
+import 'package:datatablewebpoc/utilities/ColorsConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/widget/search_widget.dart';
@@ -80,8 +81,8 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(6),
                                   color: Colors.white,
-                                  border:
-                                      Border.all(color: Colors.black26, width: 1),
+                                  border: Border.all(
+                                      color: Colors.black26, width: 1),
                                 ),
                                 child: DropDownWidget())
                           ])),
@@ -105,10 +106,40 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(6),
                                   color: Colors.white,
-                                  border:
-                                      Border.all(color: Colors.black26, width: 1),
+                                  border: Border.all(
+                                      color: Colors.black26, width: 1),
                                 ),
-                                child: CalenderWidget())
+                                child: ElevatedButton(
+                                    onPressed: () {},
+                                    style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStateProperty.all(
+                                                Colors.white)),
+                                    child: Row(children: [
+                                      Container(
+                                          padding: EdgeInsets.only(left: 15),
+                                          width: 18,
+                                          height: 18,
+                                          child: Icon(
+                                              Icons.calendar_today_outlined,
+                                              color: ColorResource.black100)),
+                                      Container(
+                                          padding: EdgeInsets.only(left: 19),
+                                          child: Text(
+                                            "Jun 16, 2021 - Jun 17, 2021",
+                                            style:
+                                                WidgetsStyles.textLato400Normal(
+                                                    color:
+                                                        ColorResource.black80,
+                                                    size: 14),
+                                          )),
+                                      Container(
+                                          padding: EdgeInsets.only(left: 12),
+                                          width: 18,
+                                          height: 18,
+                                          child: Icon(Icons.arrow_drop_down,
+                                              color: ColorResource.black100)),
+                                    ])))
                           ])),
                   Container(
                       padding: EdgeInsets.only(top: 20, left: 272),
