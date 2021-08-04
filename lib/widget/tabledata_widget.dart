@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/utilities/ColorsConfig.dart';
+import 'package:datatablewebpoc/service/networking.dart';
+import 'package:datatablewebpoc/Api/report_api.dart';
 
 class DataTableWidget extends StatefulWidget {
   const DataTableWidget({Key? key}) : super(key: key);
@@ -13,6 +15,7 @@ class DataTableWidget extends StatefulWidget {
 
 class _DataTableWidgetState extends State<DataTableWidget> {
   late List<Report> reports;
+  List<Report> reportsItems = [];
 
   final columns = [
     'Center Name',
@@ -30,7 +33,42 @@ class _DataTableWidgetState extends State<DataTableWidget> {
     // TODO: implement initState
     super.initState();
     this.reports = List.of(allReports);
+   // getReportData();
   }
+
+  // Future<void> getReportData() async {
+  //   List<Report> items = [];
+  //   var productData = await ReportData().getReportData();
+  //   print('test:$productData');
+  //
+  //   for (List value  in productData) {
+  //
+  //       print('testt:$value');
+  //
+  //     //   Report item = new Report(
+  //     //       adjustment: value["adjustment"] ?? "",
+  //     //       calculated: value["calculated"] ?? "",
+  //     //       centerName: value["centerName"] ?? "",
+  //     //       date: value["date"] ?? "",
+  //     //       net: value["net"] ?? "",
+  //     //       notes: value["notes"] ?? "",
+  //     //       paymentType: value["paymentType"] ?? "",
+  //     //      status: value["status"] ?? "");
+  //     //     items.add(item);
+  //     // }
+  //   }
+  //   setState(() {
+  //     if(reportsItems.isNotEmpty)
+  //     {
+  //       reportsItems.removeRange(0, reportsItems.length);
+  //     }
+  //     reportsItems.addAll(items);
+  //     print('test2:$reportsItems');
+  //     this.reports = List.of(reportsItems);
+  //   });
+  //
+  //
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,9 +93,9 @@ class _DataTableWidgetState extends State<DataTableWidget> {
       .toList();
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
+    print('CenterName:$report.centerName');
     final cells = [report.centerName, report.date, report.calculated, report.adjustment, report.net, report.notes,report.paymentType,report.status ];
     print(cells[4]);
-
     return DataRow(
         // color: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
         //   if cells[4]

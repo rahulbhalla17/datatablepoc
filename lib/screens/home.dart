@@ -26,7 +26,23 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     this.reports = List.of(allReports);
+    var st = getInitials('Rahul BHala test');
+    print(st);
     print('search report called : $reports');
+  }
+
+  String getInitials(bank_account_name) {
+    List<String> names = bank_account_name.split(" ");
+    String initials = "";
+    int numWords = 3;
+
+    if(numWords < names.length) {
+      numWords = names.length;
+    }
+    for(var i = 0; i < numWords; i++){
+      initials += '${names[i][0]}';
+    }
+    return initials;
   }
 
   @override

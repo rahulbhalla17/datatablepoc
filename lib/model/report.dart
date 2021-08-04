@@ -9,7 +9,7 @@ class Report {
   final String paymentType;
   final String status;
 
-  const Report({
+   Report({
     required this.centerName,
     required this.date,
     required this.calculated,

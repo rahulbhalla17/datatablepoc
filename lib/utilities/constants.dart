@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/utilities/ColorsConfig.dart';
 
 
+const openProductsURL = 'https://react-my-burger-64464-default-rtdb.firebaseio.com/royaltyReport.json?print=pretty';
 
 
 class WidgetsStyles {
