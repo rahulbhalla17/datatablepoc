@@ -12,13 +12,10 @@ class NetworkHelper {
     http.Response response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {
-      String data = response.body;
-
-      return jsonDecode(data);
+      List<dynamic> responseData = json.decode(response.body);
+      return responseData;
     } else {
       print(response.statusCode);
     }
   }
-
-
 }

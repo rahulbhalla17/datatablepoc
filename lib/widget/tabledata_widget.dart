@@ -14,8 +14,7 @@ class DataTableWidget extends StatefulWidget {
 }
 
 class _DataTableWidgetState extends State<DataTableWidget> {
-  late List<Report> reports;
-  List<Report> reportsItems = [];
+  late List<Report> reports = [];
 
   final columns = [
     'Center Name',
@@ -30,45 +29,26 @@ class _DataTableWidgetState extends State<DataTableWidget> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    this.reports = List.of(allReports);
-   // getReportData();
+    getReportData();
   }
 
-  // Future<void> getReportData() async {
-  //   List<Report> items = [];
-  //   var productData = await ReportData().getReportData();
-  //   print('test:$productData');
-  //
-  //   for (List value  in productData) {
-  //
-  //       print('testt:$value');
-  //
-  //     //   Report item = new Report(
-  //     //       adjustment: value["adjustment"] ?? "",
-  //     //       calculated: value["calculated"] ?? "",
-  //     //       centerName: value["centerName"] ?? "",
-  //     //       date: value["date"] ?? "",
-  //     //       net: value["net"] ?? "",
-  //     //       notes: value["notes"] ?? "",
-  //     //       paymentType: value["paymentType"] ?? "",
-  //     //      status: value["status"] ?? "");
-  //     //     items.add(item);
-  //     // }
-  //   }
-  //   setState(() {
-  //     if(reportsItems.isNotEmpty)
-  //     {
-  //       reportsItems.removeRange(0, reportsItems.length);
-  //     }
-  //     reportsItems.addAll(items);
-  //     print('test2:$reportsItems');
-  //     this.reports = List.of(reportsItems);
-  //   });
-  //
-  //
-  // }
+  Future<void> getReportData() async {
+    List<Report> items = [];
+    var productData = await ReportData().getReportData();
+    print('test:$productData');
+    for (Map<String, dynamic> value in productData) {
+      print('testt:$value');
+      Report item = Report.fromJson(value);
+      items.add(item);
+    }
+    setState(() {
+      if (reports.isNotEmpty) {
+        reports.removeRange(0, reports.length);
+      }
+      reports.addAll(items);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -87,26 +67,42 @@ class _DataTableWidgetState extends State<DataTableWidget> {
 
   List<DataColumn> getColumns(List<String> columns) => columns
       .map((String column) => DataColumn(
-    label: Text(column,style:WidgetsStyles.textLato400Normal(color:ColorResource.orangeText ),),
-    //  onSort: onSort,
-  ))
+            label: Text(
+              column,
+              style: WidgetsStyles.textLato400Normal(
+                  color: ColorResource.orangeText),
+            ),
+            //  onSort: onSort,
+          ))
       .toList();
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
-    print('CenterName:$report.centerName');
-    final cells = [report.centerName, report.date, report.calculated, report.adjustment, report.net, report.notes,report.paymentType,report.status ];
-    print(cells[4]);
-    return DataRow(
-        // color: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-        //   if cells[4]
-        //     return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-        //   return null;  // Use the default value.
-        // }),
-        cells: getCells(cells));
-  }).toList();
+        print('CenterName:$report.centerName');
+        final cells = [
+          report.centerName,
+          report.date,
+          report.calculated,
+          report.adjustment,
+          report.net,
+          report.notes,
+          report.paymentType,
+          report.status
+        ];
+        print(cells[4]);
+        return DataRow(
+            // color: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
+            //   if cells[4]
+            //     return Theme.of(context).colorScheme.primary.withOpacity(0.08);
+            //   return null;  // Use the default value.
+            // }),
+            cells: getCells(cells));
+      }).toList();
 
-  List<DataCell> getCells(List<dynamic> cells) =>
-      cells.map((data) => DataCell(Text('$data',  style: WidgetsStyles.textLato400Normal(color: ColorResource.greenText),))).toList();
-
-
+  List<DataCell> getCells(List<dynamic> cells) => cells
+      .map((data) => DataCell(Text(
+            '$data',
+            style:
+                WidgetsStyles.textLato400Normal(color: ColorResource.greenText),
+          )))
+      .toList();
 }
