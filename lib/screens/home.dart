@@ -112,25 +112,12 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            TextButton(
-                              onPressed: () async{
-
-                                final initialDate = DateTime.now();
-                                final newDate = await showDatePicker(
-                                  context: context,
-                                  initialDate: DateTime.now(),
-                                  firstDate: DateTime(DateTime.now().year - 5),
-                                  lastDate: DateTime(DateTime.now().year + 5),
-                                );
-
-                              },
-                              child: Container(
-                                  height: 16,
-                                  child: Text("Transaction Date",
-                                      style: WidgetsStyles.textLato400Normal(
-                                          color: ColorResource.primary100),
-                                      textAlign: TextAlign.left)),
-                            ),
+                            Container(
+                                height: 16,
+                                child: Text("Transaction Date",
+                                    style: WidgetsStyles.textLato400Normal(
+                                        color: ColorResource.primary100),
+                                    textAlign: TextAlign.left)),
                             SizedBox(
                               height: 4,
                             ),
@@ -145,7 +132,16 @@ class _HomePageState extends State<HomePage> {
                                       width: 1),
                                 ),
                                 child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      final initialDate = DateTime.now();
+                                      final newDate = await showDatePicker(
+                                        context: context,
+                                        initialDate: DateTime.now(),
+                                        firstDate: DateTime(DateTime.now().year - 5),
+                                        lastDate: DateTime(DateTime.now().year + 5),
+                                      );
+
+                                    },
                                     style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
