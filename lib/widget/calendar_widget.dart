@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 import 'package:intl/intl.dart';
 
-
 class CalenderWidget extends StatefulWidget {
   const CalenderWidget({Key? key}) : super(key: key);
 
