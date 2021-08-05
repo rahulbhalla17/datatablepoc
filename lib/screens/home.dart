@@ -110,7 +110,8 @@ class _HomePageState extends State<HomePage> {
                             Container(
                                 height: 16,
                                 child: Text("Transaction Date",
-                                    style: WidgetsStyles.textLato400Normal(),
+                                    style: WidgetsStyles.textLato400Normal(
+                                        color: ColorResource.primary100),
                                     textAlign: TextAlign.left)),
                             SizedBox(
                               height: 4,
