@@ -26,40 +26,16 @@ class _HomePageState extends State<HomePage> {
     super.initState();
 
     this.reports = List.of(allReports);
-    var st = getInitials('Rahul BHala test');
-    print(st);
-    print('search report called : $reports');
   }
 
-  String getInitials(bank_account_name) {
-    List<String> names = bank_account_name.split(" ");
-    String initials = "";
-    int numWords = 3;
-
-    if(numWords < names.length) {
-      numWords = names.length;
-    }
-    for(var i = 0; i < numWords; i++){
-      initials += '${names[i][0]}';
-    }
-    return initials;
-  }
+  final GlobalKey<DataTableWidgetState> _myWidgetState =
+      GlobalKey<DataTableWidgetState>();
 
   @override
   Widget build(BuildContext context) {
     print('Search $_searchResult');
     print('Reports $reports');
 
-    final columns = [
-      'Center Name',
-      'Date',
-      'Calculated',
-      'Adjustment',
-      'Net',
-      'Notes',
-      'Payment Type',
-      'Status'
-    ];
     return Container(
         padding: EdgeInsets.all(40.0),
         child: SingleChildScrollView(
@@ -187,7 +163,10 @@ class _HomePageState extends State<HomePage> {
                             width: 133,
                             height: 40,
                             child: ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  _myWidgetState.currentState!
+                                      .downloadTableData();
+                                },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
                                   side: BorderSide(
@@ -209,7 +188,7 @@ class _HomePageState extends State<HomePage> {
                       ])),
                 ]),
               ),
-              DataTableWidget(),
+              DataTableWidget(key: _myWidgetState),
             ],
           ),
         ));

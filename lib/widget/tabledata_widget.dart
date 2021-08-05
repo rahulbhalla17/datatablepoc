@@ -1,4 +1,5 @@
 import 'package:datatablewebpoc/model/report.dart';
+import 'package:datatablewebpoc/utilities/excel_downloader.dart';
 import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
@@ -10,11 +11,25 @@ class DataTableWidget extends StatefulWidget {
   const DataTableWidget({Key? key}) : super(key: key);
 
   @override
-  _DataTableWidgetState createState() => _DataTableWidgetState();
+  DataTableWidgetState createState() => DataTableWidgetState();
 }
 
-class _DataTableWidgetState extends State<DataTableWidget> {
+class DataTableWidgetState extends State<DataTableWidget> {
   late List<Report> reports = [];
+
+  String getInitials(bank_account_name) {
+    List<String> names = bank_account_name.split(" ");
+    String initials = "";
+    int numWords = 3;
+
+    if (numWords < names.length) {
+      numWords = names.length;
+    }
+    for (var i = 0; i < numWords; i++) {
+      initials += '${names[i][0]}';
+    }
+    return initials;
+  }
 
   final columns = [
     'Center Name',
@@ -31,6 +46,11 @@ class _DataTableWidgetState extends State<DataTableWidget> {
   void initState() {
     super.initState();
     getReportData();
+  }
+
+  void downloadTableData() {
+    ExcelDownloader().writeToExcelSheet(
+        fileName: "Report", tableHeaders: columns, data: reports);
   }
 
   Future<void> getReportData() async {
