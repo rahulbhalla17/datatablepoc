@@ -9,9 +9,9 @@ import 'package:datatablewebpoc/Api/report_api.dart';
 
 class DataTableWidget extends StatefulWidget {
   const DataTableWidget({Key? key}) : super(key: key);
-
   @override
   DataTableWidgetState createState() => DataTableWidgetState();
+
 }
 
 class DataTableWidgetState extends State<DataTableWidget> {
@@ -70,6 +70,20 @@ class DataTableWidgetState extends State<DataTableWidget> {
     });
   }
 
+  // String getInitials(bank_account_name) {
+  //   List<String> names = bank_account_name.split(" ");
+  //   String initials = "";
+  //   int numWords = 3;
+  //
+  //   if(numWords < names.length) {
+  //     numWords = names.length;
+  //   }
+  //   for(var i = 0; i < numWords; i++){
+  //     initials += '${names[i][0]}';
+  //   }
+  //   return initials;
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -98,6 +112,7 @@ class DataTableWidgetState extends State<DataTableWidget> {
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
         print('CenterName:$report.centerName');
+
         final cells = [
           report.centerName,
           report.date,

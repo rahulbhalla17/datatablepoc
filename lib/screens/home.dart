@@ -77,7 +77,9 @@ class _HomePageState extends State<HomePage> {
                                       color: Colors.black26, width: 1),
                                 ),
                                 child: ElevatedButton(
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      DropDownWidget().showMultiSelect(context);
+                                    },
                                     style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
@@ -202,6 +204,8 @@ class _HomePageState extends State<HomePage> {
       );
 
   void searchCenter(String _searchResult) {
+    print('Search Result:$_searchResult');
+9
     final reports = allReports.where((report) {
       final titleLower = report.centerName.toLowerCase();
       final authorLower = report.status.toLowerCase();
