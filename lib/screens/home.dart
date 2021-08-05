@@ -29,12 +29,8 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<DataTableWidgetState> tableWidgetState =
       GlobalKey<DataTableWidgetState>();
 
-  final GlobalKey<DropDownWidgetState> dropDownWidgetState =
-      GlobalKey<DropDownWidgetState>();
-
   @override
   Widget build(BuildContext context) {
-    var dropDownWidget = DropDownWidget(key: dropDownWidgetState);
     print('Search $_searchResult');
     print('Reports $reports');
 
@@ -80,8 +76,7 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      dropDownWidgetState.currentState
-                                          ?.showMultiSelect(context);
+                                      showDropDown();
                                     },
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -137,10 +132,11 @@ class _HomePageState extends State<HomePage> {
                                       final newDate = await showDatePicker(
                                         context: context,
                                         initialDate: DateTime.now(),
-                                        firstDate: DateTime(DateTime.now().year - 5),
-                                        lastDate: DateTime(DateTime.now().year + 5),
+                                        firstDate:
+                                            DateTime(DateTime.now().year - 5),
+                                        lastDate:
+                                            DateTime(DateTime.now().year + 5),
                                       );
-
                                     },
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -209,13 +205,15 @@ class _HomePageState extends State<HomePage> {
         ));
   }
 
+  void showDropDown() {
+    DropDownWidget();
+  }
+
   Widget buildSearch() => SearchWidget(
         text: _searchResult,
         hintText: 'Search Center',
         onChanged: searchCenter,
       );
-
-
 
   void searchCenter(String _searchResult) {
     print('Search Result:$_searchResult');
