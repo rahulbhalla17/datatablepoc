@@ -18,12 +18,29 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   late List<Report> reports;
   String _searchResult = '';
+  late DateTime selectedDate;
+  DateTimeRange? selectedDateRange;
 
   @override
   void initState() {
     super.initState();
 
     this.reports = List.of(allReports);
+  }
+
+  Future pickDateRange(BuildContext context) async {
+
+    final newDateRange = await showDateRangePicker(
+      context: context,
+      firstDate: DateTime(DateTime.now().year - 5),
+      lastDate: DateTime(DateTime.now().year + 5),
+      initialDateRange: selectedDateRange ,
+    );
+
+    if (newDateRange == null) return;
+    setState(() => selectedDateRange = newDateRange);
+    print(selectedDateRange!.start);
+    print(selectedDateRange!.end);
   }
 
   final GlobalKey<DataTableWidgetState> tableWidgetState =
@@ -132,16 +149,7 @@ class _HomePageState extends State<HomePage> {
                                       width: 1),
                                 ),
                                 child: ElevatedButton(
-                                    onPressed: () async {
-                                      final initialDate = DateTime.now();
-                                      final newDate = await showDatePicker(
-                                        context: context,
-                                        initialDate: DateTime.now(),
-                                        firstDate: DateTime(DateTime.now().year - 5),
-                                        lastDate: DateTime(DateTime.now().year + 5),
-                                      );
-
-                                    },
+                                    onPressed: () => pickDateRange(context),
                                     style: ButtonStyle(
                                         backgroundColor:
                                             MaterialStateProperty.all(
