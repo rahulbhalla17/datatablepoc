@@ -1,8 +1,5 @@
 import 'package:datatablewebpoc/model/report.dart';
-import 'package:flutter/material.dart';
 import 'package:excel/excel.dart';
-import 'package:path/path.dart';
-import 'dart:io';
 
 class ExcelDownloader {
   void writeToExcelSheet(
@@ -33,6 +30,6 @@ class ExcelDownloader {
 
     var finalName = fileName! + ".xlsx";
     excel.rename("Sheet1", "Report");
-    var fileBytes = excel.save(fileName: finalName);
+    excel.save(fileName: finalName);
   }
 }

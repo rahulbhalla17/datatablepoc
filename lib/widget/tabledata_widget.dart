@@ -1,17 +1,14 @@
 import 'package:datatablewebpoc/model/report.dart';
 import 'package:datatablewebpoc/utilities/excel_downloader.dart';
 import 'package:flutter/material.dart';
-import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/utilities/ColorsConfig.dart';
-import 'package:datatablewebpoc/service/networking.dart';
 import 'package:datatablewebpoc/Api/report_api.dart';
 
 class DataTableWidget extends StatefulWidget {
   const DataTableWidget({Key? key}) : super(key: key);
   @override
   DataTableWidgetState createState() => DataTableWidgetState();
-
 }
 
 class DataTableWidgetState extends State<DataTableWidget> {

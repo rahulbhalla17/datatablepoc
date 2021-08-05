@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/data/reports.dart';
 import 'package:datatablewebpoc/widget/search_widget.dart';
 import 'package:datatablewebpoc/widget/dropdown_widget.dart';
-import 'package:datatablewebpoc/widget/calendar_widget.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/widget/tabledata_widget.dart';
-
-import 'dart:html';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,11 +25,15 @@ class _HomePageState extends State<HomePage> {
     this.reports = List.of(allReports);
   }
 
-  final GlobalKey<DataTableWidgetState> _myWidgetState =
+  final GlobalKey<DataTableWidgetState> tableWidgetState =
       GlobalKey<DataTableWidgetState>();
+
+  final GlobalKey<DropDownWidgetState> dropDownWidgetState =
+      GlobalKey<DropDownWidgetState>();
 
   @override
   Widget build(BuildContext context) {
+    var dropDownWidget = DropDownWidget(key: dropDownWidgetState);
     print('Search $_searchResult');
     print('Reports $reports');
 
@@ -78,7 +79,8 @@ class _HomePageState extends State<HomePage> {
                                 ),
                                 child: ElevatedButton(
                                     onPressed: () {
-                                      DropDownWidget().showMultiSelect(context);
+                                      dropDownWidgetState.currentState
+                                          ?.showMultiSelect(context);
                                     },
                                     style: ButtonStyle(
                                         backgroundColor:
@@ -167,8 +169,8 @@ class _HomePageState extends State<HomePage> {
                             height: 40,
                             child: ElevatedButton(
                                 onPressed: () {
-                                  _myWidgetState.currentState!
-                                      .downloadTableData();
+                                  tableWidgetState.currentState
+                                      ?.downloadTableData();
                                 },
                                 style: ElevatedButton.styleFrom(
                                   primary: Colors.white,
@@ -191,7 +193,7 @@ class _HomePageState extends State<HomePage> {
                       ])),
                 ]),
               ),
-              DataTableWidget(key: _myWidgetState),
+              DataTableWidget(key: tableWidgetState),
             ],
           ),
         ));
@@ -205,7 +207,7 @@ class _HomePageState extends State<HomePage> {
 
   void searchCenter(String _searchResult) {
     print('Search Result:$_searchResult');
-9
+
     final reports = allReports.where((report) {
       final titleLower = report.centerName.toLowerCase();
       final authorLower = report.status.toLowerCase();

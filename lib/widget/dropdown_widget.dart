@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class MultiSelectDialogItem<V> {
   const MultiSelectDialogItem(this.value, this.label);
 
@@ -9,7 +8,9 @@ class MultiSelectDialogItem<V> {
 }
 
 class MultiSelectDialog<V> extends StatefulWidget {
-  MultiSelectDialog({Key? key, required this.items, required this.initialSelectedValues}) : super(key: key);
+  MultiSelectDialog(
+      {Key? key, required this.items, required this.initialSelectedValues})
+      : super(key: key);
 
   final List<MultiSelectDialogItem<V>> items;
   final Set<V> initialSelectedValues;
@@ -23,9 +24,7 @@ class _MultiSelectDialogState<V> extends State<MultiSelectDialog<V>> {
 
   void initState() {
     super.initState();
-    if (widget.initialSelectedValues != null) {
-      _selectedValues.addAll(widget.initialSelectedValues);
-    }
+    _selectedValues.addAll(widget.initialSelectedValues);
   }
 
   void _onItemCheckedChange(V itemValue, bool checked) {
@@ -83,30 +82,28 @@ class _MultiSelectDialogState<V> extends State<MultiSelectDialog<V>> {
   }
 }
 
-
 class DropDownWidget extends StatefulWidget {
   const DropDownWidget({Key? key}) : super(key: key);
 
   @override
-  _DropDownWidgetState createState() => _DropDownWidgetState();
+  DropDownWidgetState createState() => DropDownWidgetState();
 }
 
-class _DropDownWidgetState extends State<DropDownWidget> {
-  List <MultiSelectDialogItem<int>> multiItem = [];
+class DropDownWidgetState extends State<DropDownWidget> {
+  List<MultiSelectDialogItem<int>> multiItem = [];
 
   final valuestopopulate = {
-    1 : "India",
-    2 : "Britain",
-    3 : "Russia",
-    4 : "Canada",
+    1: "India",
+    2: "Britain",
+    3: "Russia",
+    4: "Canada",
   };
 
-  void populateMultiselect(){
-    for(int v in valuestopopulate.keys){
+  void populateMultiselect() {
+    for (int v in valuestopopulate.keys) {
       multiItem.add(MultiSelectDialogItem(v, valuestopopulate[v]!));
     }
   }
-
 
   void showMultiSelect(BuildContext context) async {
     multiItem = [];
@@ -123,7 +120,7 @@ class _DropDownWidgetState extends State<DropDownWidget> {
       builder: (BuildContext context) {
         return MultiSelectDialog(
           items: items,
-          initialSelectedValues: [1,2].toSet(),
+          initialSelectedValues: [1, 2].toSet(),
         );
       },
     );
@@ -132,16 +129,11 @@ class _DropDownWidgetState extends State<DropDownWidget> {
     getvaluefromkey(selectedValues!);
   }
 
-  void getvaluefromkey(Set selection){
-    if(selection != null){
-      for(int x in selection.toList()){
-        print(valuestopopulate[x]);
-      }
+  void getvaluefromkey(Set selection) {
+    for (int x in selection.toList()) {
+      print(valuestopopulate[x]);
     }
   }
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +148,6 @@ class _DropDownWidgetState extends State<DropDownWidget> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
-
             RaisedButton(
               child: Text("Open Multiselect"),
               onPressed: () => showMultiSelect(context),
