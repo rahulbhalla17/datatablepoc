@@ -6,6 +6,7 @@ import 'package:datatablewebpoc/widget/search_widget.dart';
 import 'package:datatablewebpoc/widget/dropdown_widget.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/widget/tabledata_widget.dart';
+import 'package:datatablewebpoc/widget/calendar_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -111,12 +112,25 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                                height: 16,
-                                child: Text("Transaction Date",
-                                    style: WidgetsStyles.textLato400Normal(
-                                        color: ColorResource.primary100),
-                                    textAlign: TextAlign.left)),
+                            TextButton(
+                              onPressed: () async{
+
+                                final initialDate = DateTime.now();
+                                final newDate = await showDatePicker(
+                                  context: context,
+                                  initialDate: DateTime.now(),
+                                  firstDate: DateTime(DateTime.now().year - 5),
+                                  lastDate: DateTime(DateTime.now().year + 5),
+                                );
+
+                              },
+                              child: Container(
+                                  height: 16,
+                                  child: Text("Transaction Date",
+                                      style: WidgetsStyles.textLato400Normal(
+                                          color: ColorResource.primary100),
+                                      textAlign: TextAlign.left)),
+                            ),
                             SizedBox(
                               height: 4,
                             ),
@@ -204,6 +218,8 @@ class _HomePageState extends State<HomePage> {
         hintText: 'Search Center',
         onChanged: searchCenter,
       );
+
+
 
   void searchCenter(String _searchResult) {
     print('Search Result:$_searchResult');

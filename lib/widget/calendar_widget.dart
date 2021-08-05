@@ -3,69 +3,72 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 
-class DateRangePickerWidget extends StatefulWidget {
-
+class DatetimePickerWidget extends StatefulWidget {
   @override
-  _DateRangePickerWidgetState createState() => _DateRangePickerWidgetState();
+  _DatetimePickerWidgetState createState() => _DatetimePickerWidgetState();
 }
 
-class _DateRangePickerWidgetState extends State<DateRangePickerWidget> {
-  DateTimeRange? dateRange;
+class _DatetimePickerWidgetState extends State<DatetimePickerWidget> {
+  DateTime? dateTime;
 
-  String getFrom() {
-    if (dateRange == null) {
-      return 'From';
+  String getText() {
+    if (dateTime == null) {
+      return 'Select DateTime';
     } else {
-      return DateFormat('MM/dd/yyyy').format(dateRange!.start);
-    }
-  }
-
-  String getUntil() {
-    if (dateRange == null) {
-      return 'Until';
-    } else {
-      return DateFormat('MM/dd/yyyy').format(dateRange!.end);
+      return DateFormat('MM/dd/yyyy HH:mm').format(dateTime!);
     }
   }
 
   @override
-  Widget build(BuildContext context) => HeaderWidget(
-    title: 'Date Range',
-    child: Row(
-      children: [
-        Expanded(
-          child: ButtonWidget(
-            text: getFrom(),
-            onClicked: () => pickDateRange(context),
-          ),
-        ),
-        const SizedBox(width: 8),
-        Icon(Icons.arrow_forward, color: Colors.white),
-        const SizedBox(width: 8),
-        Expanded(
-          child: ButtonWidget(
-            text: getUntil(),
-            onClicked: () => pickDateRange(context),
-          ),
-        ),
-      ],
-    ),
+  Widget build(BuildContext context) => ButtonHeaderWidget(
+    title: 'DateTime',
+    text: getText(),
+    onClicked: () => pickDateTime(context),
   );
 
-  Future pickDateRange(BuildContext context) async {
-    final initialDateRange = DateTimeRange(
-      start: DateTime.now(),
-      end: DateTime.now().add(Duration(hours: 24 * 3)),
-    );
-    final newDateRange = await showDateRangePicker(
+  Future pickDateTime(BuildContext context) async {
+    final date = await pickDate(context);
+    if (date == null) return;
+
+    final time = await pickTime(context);
+    if (time == null) return;
+
+    setState(() {
+      dateTime = DateTime(
+        date.year,
+        date.month,
+        date.day,
+        time.hour,
+        time.minute,
+      );
+    });
+  }
+
+  Future<DateTime?> pickDate(BuildContext context) async {
+    final initialDate = DateTime.now();
+    final newDate = await showDatePicker(
       context: context,
+      initialDate: dateTime ?? initialDate,
       firstDate: DateTime(DateTime.now().year - 5),
       lastDate: DateTime(DateTime.now().year + 5),
-      initialDateRange: dateRange ?? initialDateRange,
     );
 
-    if (newDateRange == null) return;
+    if (newDate == null) return null;
 
-    setState(() => dateRange = newDateRange);
+    return newDate;
+  }
+
+  Future<TimeOfDay?> pickTime(BuildContext context) async {
+    final initialTime = TimeOfDay(hour: 9, minute: 0);
+    final newTime = await showTimePicker(
+      context: context,
+      initialTime: dateTime != null
+          ? TimeOfDay(hour: dateTime!.hour, minute: dateTime!.minute)
+          : initialTime,
+    );
+
+    if (newTime == null) return null;
+
+    return newTime;
   }
 }
