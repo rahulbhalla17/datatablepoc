@@ -83,11 +83,21 @@ class DataTableWidgetState extends State<DataTableWidget> {
         return DataRow(cells: getCells(report.toDisplayValuesArray()));
       }).toList();
 
-  List<DataCell> getCells(List<dynamic> cells) => cells
-      .map((data) => DataCell(Text(
-            '$data',
-            style: WidgetsStyles.textLato400Normal(
-                size: 14, color: ColorResource.black100),
-          )))
-      .toList();
+  List<DataCell> getCells(List<dynamic> cells) {
+    List<DataCell> dataCells = [];
+
+    cells.asMap().forEach((index, data) {
+      DataCell cell = DataCell(Text(
+        '$data',
+        style: WidgetsStyles.textLato400Normal(
+            size: 14,
+            color: '$index' == '4'
+                ? ColorResource.greenText
+                : ColorResource.black100),
+      ));
+      dataCells.add(cell);
+    });
+
+    return dataCells;
+  }
 }
