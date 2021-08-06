@@ -88,21 +88,26 @@ class DataTableWidgetState extends State<DataTableWidget> {
 
     cells.asMap().forEach((index, data) {
       if (index == 0) {
-        DataCell dataCell = DataCell(RichText(
-            text: TextSpan(children: [
-          TextSpan(
-              text: data.substring(0, 3) ,
-              style: WidgetsStyles.textLato700Normal(
-                  size: 16, color: Color(0xff8E5A1E), backgroundColor: Color(0xffFFEFDD))),
-          TextSpan(
-              text: data.substring(4, data.length),
+        DataCell dataCell = new DataCell(Row(children: [
+          Container(
+              decoration: BoxDecoration(
+                  color: Color(0xffFFEFDD),
+                  borderRadius: BorderRadius.circular(12)),
+              child: RichText(
+                  text: TextSpan(children: [
+                TextSpan(
+                    text: data.substring(0, 2),
+                    style: WidgetsStyles.textLato700Normal(
+                        size: 16,
+                        color: Color(0xff8E5A1E),
+                        backgroundColor: Color(0xffFFEFDD)))
+              ]))),
+          Text(data.substring(2, data.length),
               style: WidgetsStyles.textLato400Normal(
                   size: 14, color: ColorResource.black100))
-        ])));
+        ]));
         dataCells.add(dataCell);
-      }
-
-      else {
+      } else {
         DataCell cell = DataCell(Text(
           '$data',
           style: WidgetsStyles.textLato400Normal(

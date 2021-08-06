@@ -37,9 +37,6 @@ class _ReportsHomeScreen extends State<ReportsHomeScreen> {
               child: ListView(
                 children: <Widget>[
                   Container(
-                    child: Text('test'),
-                  ),
-                  Container(
                       width: screenSize.width / 3,
                       child: ElevatedButton(
                           onPressed: () {
