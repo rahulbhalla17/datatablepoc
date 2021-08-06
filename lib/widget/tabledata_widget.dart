@@ -14,20 +14,6 @@ class DataTableWidget extends StatefulWidget {
 class DataTableWidgetState extends State<DataTableWidget> {
   late List<Report> reports = [];
 
-  String getInitials(bank_account_name) {
-    List<String> names = bank_account_name.split(" ");
-    String initials = "";
-    int numWords = 3;
-
-    if (numWords < names.length) {
-      numWords = names.length;
-    }
-    for (var i = 0; i < numWords; i++) {
-      initials += '${names[i][0]}';
-    }
-    return initials;
-  }
-
   final columns = [
     'Center Name',
     'Date',
@@ -94,7 +80,7 @@ class DataTableWidgetState extends State<DataTableWidget> {
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
         print('CenterName:$report.centerName');
-        return DataRow(cells: getCells(report.toValuesArray()));
+        return DataRow(cells: getCells(report.toDisplayValuesArray()));
       }).toList();
 
   List<DataCell> getCells(List<dynamic> cells) => cells
