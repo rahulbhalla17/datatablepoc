@@ -53,7 +53,7 @@ class _ReportsHomeScreen extends State<ReportsHomeScreen> {
                       width: screenSize.width / 3,
                       child: ElevatedButton(
                           onPressed: () {
-                            this.onViewRoyaltyFailedReport();
+                            //this.onViewRoyaltyFailedReport();
                           },
                           child: Text(
                             'View Royalty Failed Report',
@@ -65,7 +65,7 @@ class _ReportsHomeScreen extends State<ReportsHomeScreen> {
                       width: screenSize.width / 3,
                       child: ElevatedButton(
                           onPressed: () {
-                            this.onViewDebitReport();
+                            //this.onViewDebitReport();
                           },
                           child: Text(
                             'View Debit Report',

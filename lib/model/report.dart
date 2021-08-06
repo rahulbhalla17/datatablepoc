@@ -45,9 +45,9 @@ class Report {
     List<String> values = [];
     values.add(centerName);
     values.add(date);
-    values.add(calculated.toString());
-    values.add(adjustment.toString());
-    values.add(net.toString());
+    values.add("\$" + calculated.toString());
+    values.add("\$" + adjustment.toString());
+    values.add("\$" + net.toString());
     values.add(notes);
     values.add(paymentType);
     values.add(status);

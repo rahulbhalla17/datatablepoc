@@ -67,20 +67,6 @@ class DataTableWidgetState extends State<DataTableWidget> {
     });
   }
 
-  // String getInitials(bank_account_name) {
-  //   List<String> names = bank_account_name.split(" ");
-  //   String initials = "";
-  //   int numWords = 3;
-  //
-  //   if(numWords < names.length) {
-  //     numWords = names.length;
-  //   }
-  //   for(var i = 0; i < numWords; i++){
-  //     initials += '${names[i][0]}';
-  //   }
-  //   return initials;
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -100,41 +86,22 @@ class DataTableWidgetState extends State<DataTableWidget> {
       .map((String column) => DataColumn(
             label: Text(
               column,
-              style: WidgetsStyles.textLato400Normal(
-                  color: ColorResource.orangeText),
+              style: WidgetsStyles.textLato700Normal(
+                  size: 12, color: ColorResource.black80),
             ),
-            //  onSort: onSort,
           ))
       .toList();
 
   List<DataRow> getRows(List<Report> reports) => reports.map((Report report) {
         print('CenterName:$report.centerName');
-
-        final cells = [
-          report.centerName,
-          report.date,
-          report.calculated,
-          report.adjustment,
-          report.net,
-          report.notes,
-          report.paymentType,
-          report.status
-        ];
-        print(cells[4]);
-        return DataRow(
-            // color: MaterialStateProperty.resolveWith<Color>((Set<MaterialState> states) {
-            //   if cells[4]
-            //     return Theme.of(context).colorScheme.primary.withOpacity(0.08);
-            //   return null;  // Use the default value.
-            // }),
-            cells: getCells(cells));
+        return DataRow(cells: getCells(report.toValuesArray()));
       }).toList();
 
   List<DataCell> getCells(List<dynamic> cells) => cells
       .map((data) => DataCell(Text(
             '$data',
-            style:
-                WidgetsStyles.textLato400Normal(color: ColorResource.greenText),
+            style: WidgetsStyles.textLato400Normal(
+                size: 14, color: ColorResource.black100),
           )))
       .toList();
 }

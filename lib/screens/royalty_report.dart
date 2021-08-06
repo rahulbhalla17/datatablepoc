@@ -19,6 +19,17 @@ class _RoyaltyReportState extends State<RoyaltyReport> {
   late List<Report> reports;
   String _searchResult = '';
 
+  final columns = [
+    'Center Name',
+    'Date',
+    'Calculated',
+    'Adjustment',
+    'Net',
+    'Notes',
+    'Payment Type',
+    'Status'
+  ];
+
   @override
   void initState() {
     super.initState();
