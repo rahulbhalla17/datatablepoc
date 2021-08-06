@@ -7,6 +7,7 @@ import 'package:datatablewebpoc/widget/dropdown_widget.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/widget/tabledata_widget.dart';
 import 'package:datatablewebpoc/widget/calendar_widget.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class RoyaltyReport extends StatefulWidget {
   const RoyaltyReport({Key? key}) : super(key: key);
@@ -51,13 +52,16 @@ class _RoyaltyReportState extends State<RoyaltyReport> {
         ),
         body: Container(
             padding: EdgeInsets.all(40.0),
+            //color: Colors.green,
             child: SafeArea(
                 child: Container(
                     padding: EdgeInsets.all(40.0),
+                    //color: Colors.yellow,
+
                     child: SingleChildScrollView(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
                             "Reports",
@@ -213,6 +217,7 @@ class _RoyaltyReportState extends State<RoyaltyReport> {
                                       ])),
                               Container(
                                   padding: EdgeInsets.only(top: 20, left: 272),
+
                                   child: Column(children: [
                                     Container(
                                         width: 133,

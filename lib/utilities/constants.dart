@@ -31,13 +31,14 @@ class WidgetsStyles {
 
   //Header DataTable
   static TextStyle textLato700Normal(
-      {Color color = ColorResource.primary, double size = 12}) {
+      {Color color = ColorResource.primary, double size = 12, backgroundColor = Colors.white}) {
     return TextStyle(
       color: color,
       fontWeight: FontWeight.w700,
       fontStyle: FontStyle.normal,
       fontSize: size,
       fontFamily: 'Lato',
+      backgroundColor: backgroundColor,
     );
   }
 }
