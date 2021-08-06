@@ -93,6 +93,9 @@ class DataTableWidgetState extends State<DataTableWidget> {
               decoration: BoxDecoration(
                   color: Color(0xffFFEFDD),
                   borderRadius: BorderRadius.circular(12)),
+                  width: 36,
+                  height: 36,
+              alignment: Alignment.center,
               child: RichText(
                   text: TextSpan(children: [
                 TextSpan(
@@ -107,7 +110,30 @@ class DataTableWidgetState extends State<DataTableWidget> {
                   size: 14, color: ColorResource.black100))
         ]));
         dataCells.add(dataCell);
-      } else {
+      } else if (index == 7){
+
+        DataCell dataCell = new DataCell(Row(children: [
+          Container(
+              decoration: BoxDecoration(
+                  //color: Color(0xffFFEFDD),
+                  borderRadius: BorderRadius.circular(4)),
+              height: 24,
+              alignment: Alignment.center,
+              child: RichText(
+                  text: TextSpan(children: [
+                    TextSpan(
+                        text: data,
+                        style: WidgetsStyles.textLato400Normal(
+                            size: 12,
+                            color: data == 'Settled' ? Color(0xff00B28A) : Color(0xffDF9641),
+                            backgroundColor : data == 'Settled' ? Color(0xffEBF9F6) : Color(0xffFDF7F0)))
+                  ]))),
+
+        ]));
+        dataCells.add(dataCell);
+
+      }
+      else {
         DataCell cell = DataCell(Text(
           '$data',
           style: WidgetsStyles.textLato400Normal(

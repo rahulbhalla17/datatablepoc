@@ -7,13 +7,14 @@ const openProductsURL =
 class WidgetsStyles {
   // Fields DataTable
   static TextStyle textLato400Normal(
-      {Color color = ColorResource.black100, double size = 12}) {
+      {Color color = ColorResource.black100, double size = 12, backgroundColor = Colors.white}) {
     return TextStyle(
       color: color,
       fontWeight: FontWeight.w400,
       fontStyle: FontStyle.normal,
       fontSize: size,
       fontFamily: 'Lato',
+      backgroundColor: backgroundColor,
     );
   }
   //WidgetsStyles.textLato400Normal(color: textColor, size: 12)
