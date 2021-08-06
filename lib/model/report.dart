@@ -53,4 +53,31 @@ class Report {
     values.add(status);
     return values;
   }
+
+  List<String> toDisplayValuesArray() {
+    List<String> values = [];
+    values.add(getInitials(centerName) + "  " + centerName);
+    values.add(date);
+    values.add("\$" + calculated.toString());
+    values.add("\$" + adjustment.toString());
+    values.add("\$" + net.toString());
+    values.add(notes);
+    values.add(paymentType);
+    values.add(status);
+    return values;
+  }
+
+  String getInitials(String value) {
+    List<String> names = value.split(" ");
+    String initials = "";
+    int numWords = 2;
+
+    if (numWords > names.length) {
+      numWords = names.length;
+    }
+    for (var i = 0; i < numWords; i++) {
+      initials += '${names[i][0]}';
+    }
+    return initials;
+  }
 }
