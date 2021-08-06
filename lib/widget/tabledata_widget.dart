@@ -87,17 +87,31 @@ class DataTableWidgetState extends State<DataTableWidget> {
     List<DataCell> dataCells = [];
 
     cells.asMap().forEach((index, data) {
-      DataCell cell = DataCell(Text(
-        '$data',
-        style: WidgetsStyles.textLato400Normal(
-            size: 14,
-            color: '$index' == '4'
-                ? ColorResource.greenText
-                : ColorResource.black100),
-      ));
-      dataCells.add(cell);
+      if (index == 0) {
+        DataCell dataCell = DataCell(RichText(
+            text: TextSpan(children: [
+          TextSpan(
+              text: data.substring(0, 3),
+              style: WidgetsStyles.textLato700Normal(
+                  size: 16, color: Color(0xff8E5A1E))),
+          TextSpan(
+              text: data.substring(4, data.length),
+              style: WidgetsStyles.textLato400Normal(
+                  size: 14, color: ColorResource.black100))
+        ])));
+        dataCells.add(dataCell);
+      } else {
+        DataCell cell = DataCell(Text(
+          '$data',
+          style: WidgetsStyles.textLato400Normal(
+              size: 14,
+              color: '$index' == '4'
+                  ? ColorResource.greenText
+                  : ColorResource.black100),
+        ));
+        dataCells.add(cell);
+      }
     });
-
     return dataCells;
   }
 }
