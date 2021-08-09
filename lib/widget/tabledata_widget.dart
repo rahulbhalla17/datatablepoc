@@ -55,17 +55,26 @@ class DataTableWidgetState extends State<DataTableWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          border: Border(
-              right: BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
-              top: BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
-              bottom:
-                  BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
-              left:
-                  BorderSide(width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)))),
-      child: DataTable(columns: getColumns(columns), rows: getRows(reports)),
-    );
+    return SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  color: Colors.white,
+                  border: Border(
+                      right: BorderSide(
+                          width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
+                      top: BorderSide(
+                          width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
+                      bottom: BorderSide(
+                          width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)),
+                      left: BorderSide(
+                          width: 1, color: Color.fromRGBO(0, 0, 0, 0.26)))),
+              child: DataTable(
+                  columns: getColumns(columns), rows: getRows(reports)),
+            )));
   }
 
   List<DataColumn> getColumns(List<String> columns) => columns
@@ -93,8 +102,8 @@ class DataTableWidgetState extends State<DataTableWidget> {
               decoration: BoxDecoration(
                   color: Color(0xffFFEFDD),
                   borderRadius: BorderRadius.circular(12)),
-                  width: 36,
-                  height: 36,
+              width: 36,
+              height: 36,
               alignment: Alignment.center,
               child: RichText(
                   text: TextSpan(children: [
@@ -110,8 +119,7 @@ class DataTableWidgetState extends State<DataTableWidget> {
                   size: 14, color: ColorResource.black100))
         ]));
         dataCells.add(dataCell);
-      } else if (index == 7){
-
+      } else if (index == 7) {
         DataCell dataCell = new DataCell(Row(children: [
           Container(
               decoration: BoxDecoration(
@@ -121,19 +129,20 @@ class DataTableWidgetState extends State<DataTableWidget> {
               alignment: Alignment.center,
               child: RichText(
                   text: TextSpan(children: [
-                    TextSpan(
-                        text: data,
-                        style: WidgetsStyles.textLato400Normal(
-                            size: 12,
-                            color: data == 'Settled' ? Color(0xff00B28A) : Color(0xffDF9641),
-                            backgroundColor : data == 'Settled' ? Color(0xffEBF9F6) : Color(0xffFDF7F0)))
-                  ]))),
-
+                TextSpan(
+                    text: data,
+                    style: WidgetsStyles.textLato400Normal(
+                        size: 12,
+                        color: data == 'Settled'
+                            ? Color(0xff00B28A)
+                            : Color(0xffDF9641),
+                        backgroundColor: data == 'Settled'
+                            ? Color(0xffEBF9F6)
+                            : Color(0xffFDF7F0)))
+              ]))),
         ]));
         dataCells.add(dataCell);
-
-      }
-      else {
+      } else {
         DataCell cell = DataCell(Text(
           '$data',
           style: WidgetsStyles.textLato400Normal(

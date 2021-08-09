@@ -17,13 +17,11 @@ class _ReportsHomeScreen extends State<ReportsHomeScreen> {
   }
 
   Future<void> onViewRoyaltyFailedReport() async {
-    await Navigator.push(context,
-        MaterialPageRoute(builder: (context) => RoyaltyFailedReport()));
+    //await Navigator.push(context, MaterialPageRoute(builder: (context) => RoyaltyFailedReport()));
   }
 
   Future<void> onViewDebitReport() async {
-    await Navigator.push(
-        context, MaterialPageRoute(builder: (context) => DebitReport()));
+    //await Navigator.push(context, MaterialPageRoute(builder: (context) => DebitReport()));
   }
 
   @override
