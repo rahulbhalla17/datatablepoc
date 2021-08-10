@@ -30,6 +30,7 @@ class _ReportsHomeScreen extends State<ReportsHomeScreen> {
     return Scaffold(
         appBar: AppBar(title: Text("Reports Sample")),
         body: Container(
+          color: Colors.white,
             padding: EdgeInsets.all(40.0),
             child: SafeArea(
               child: ListView(

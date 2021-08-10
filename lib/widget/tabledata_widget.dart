@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:datatablewebpoc/utilities/constants.dart';
 import 'package:datatablewebpoc/utilities/ColorsConfig.dart';
 import 'package:datatablewebpoc/Api/report_api.dart';
+import 'package:datatablewebpoc/screens/netInfo_screen.dart';
 
 class DataTableWidget extends StatefulWidget {
   const DataTableWidget({Key? key}) : super(key: key);
@@ -150,7 +151,18 @@ class DataTableWidgetState extends State<DataTableWidget> {
               color: '$index' == '4'
                   ? ColorResource.greenText
                   : ColorResource.black100),
-        ));
+        ),onTap: (){
+          if(index ==4)
+            {
+              print('Price:$data');
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          NetInfoScreen(price: data,)
+                  ));
+            }
+        });
         dataCells.add(cell);
       }
     });
