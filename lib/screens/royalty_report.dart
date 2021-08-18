@@ -48,11 +48,11 @@ class _RoyaltyReportState extends State<RoyaltyReport> {
         ),
         body: Container(
             padding: EdgeInsets.all(40.0),
-            color: Colors.green, // needs to change it to white color
+            color: Colors.white, // needs to change it to white color
             child: SafeArea(
                 child: Container(
                     padding: EdgeInsets.all(40.0),
-                    color: Colors.yellow,
+                    color: Colors.white,
                     child: SingleChildScrollView(
                       scrollDirection: Axis.vertical,
                       child: Column(
@@ -65,7 +65,7 @@ class _RoyaltyReportState extends State<RoyaltyReport> {
                           ),
                           Container(
                             padding: EdgeInsets.only(top: 32, bottom: 24),
-                            color: Colors.red,
+
 
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
